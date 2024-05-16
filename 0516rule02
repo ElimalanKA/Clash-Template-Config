@@ -1,0 +1,174 @@
+# 基础数据 设置锚点 复用 
+-----------------------------------------------------------------------------------
+BASE-DATA:
+  common:
+    health-check-url: &health-check-url http://www.gstatic.com/generate_204
+    proxies-all: &proxies-all
+      - 🚀国外流量
+      - 🔰直接连接
+      - 🇺🇸 AIRPORT-US
+      - 🇨🇳 AIRPORT-TW
+      - 🇯🇵 AIRPORT-JP
+      - AIRPORT
+      - ProxyChain
+    proxies-all-fdirect: &proxies-all-fdirect
+      - 🔰直接连接
+      - 🚀国外流量
+      - 🇺🇸 AIRPORT-US
+      - 🇨🇳 AIRPORT-TW
+      - 🇯🇵 AIRPORT-JP
+      - AIRPORT
+      - ProxyChain
+    proxies-all-oforeign: &proxies-all-oforeign
+      - 🇺🇸 AIRPORT-US
+      - 🇨🇳 AIRPORT-TW
+      - 🇯🇵 AIRPORT-JP
+      - AIRPORT
+      - ProxyChain
+    proxies-all-for-proxychain: &proxies-all-for-proxychain
+      - 🇺🇸 AIRPORT-US
+      - 🇨🇳 AIRPORT-TW
+      - 🇯🇵 AIRPORT-JP
+      - AIRPORT
+    proxies-all-for-tiktok: &proxies-all-for-tiktok
+      - 🇺🇸 AIRPORT-US
+      - 🚀国外流量
+      - AIRPORT
+      - 🇨🇳 AIRPORT-TW
+      - 🇯🇵 AIRPORT-JP
+    proxies-all-for-openai: &proxies-all-for-openai
+      - 🇺🇸 AIRPORT-US
+      - 🇨🇳 AIRPORT-TW
+      - 🇯🇵 AIRPORT-JP
+      - AIRPORT
+
+  proxy-providers-config:
+    proxy-providers-use: &proxy-providers-use 
+      - airport
+    proxy-providers-common:
+      airport-interval: &airport-interval 36000
+      url-airport: &url-airport "" # 这里填入机场链接
+      proxy-file-path-AirPort: &proxy-file-path-AirPort myprovider/proxies/provider-airport.yml
+      # url-warp: &url-warp "" # 这里填入机场2
+      # proxy-file-path-warp: &proxy-file-path-warp myprovider/proxies/provider-warp.yml
+      # url-local: &url-local "" # 这里填入机场3
+      # proxy-file-path-local: &proxy-file-path-local myprovider/proxies/provider-local.yml
+
+proxy-providers-filter:
+      proxy-filter-US: &proxy-filter-US '美国|US|United States|America'
+      proxy-filter-TW: &proxy-filter-TW '台湾|TW|Taiwan'
+      proxy-filter-JP: &proxy-filter-JP '日本|JP|Japan'
+      proxy-filter-special-streaming-media: &proxy-filter-special-streaming-media '美国|US|United States|America|台湾|TW|Taiwan|日本|JP|Japan‘
+  
+  rule-providers-config:
+    rule-providers-common:
+      rule-interval: &rule-interval 3600
+    rule-providers-group:
+      AdBlock:
+        rule-file-path-AdBlock: &rule-file-path-AdBlock myprovider/ruleset/AdBlock.yaml
+        rule-provider-url-AdBlock: &rule-provider-url-AdBlock https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/AdBlock.yaml
+      Apple:
+        rule-file-path-Apple: &rule-file-path-Apple myprovider/ruleset/Apple.yaml
+        rule-provider-url-Apple: &rule-provider-url-Apple https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Apple.yaml
+      Adobe:
+        rule-file-path-Adobe: &rule-file-path-Adobe myprovider/ruleset/Adobe.yaml
+        rule-provider-url-Adobe: &rule-provider-url-Adobe https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Adobe.yaml
+      Amazon:
+        rule-file-path-Amazon: &rule-file-path-Amazon myprovider/ruleset/Amazon.yaml
+        rule-provider-url-Amazon: &rule-provider-url-Amazon https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Amazon.yaml
+      China:
+        rule-file-path-China: &rule-file-path-China myprovider/ruleset/China.yaml
+        rule-provider-url-China: &rule-provider-url-China https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/China.yaml
+      Bilibili:
+        rule-file-path-Bilibili: &rule-file-path-BiliBili myprovider/ruleset/Bilibili.yaml
+        rule-provider-url-BiliBili: &rule-provider-url-BiliBili https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Bilibili.yaml
+      Facebook:
+        rule-file-path-Facebook: &rule-file-path-Facebook myprovider/ruleset/Facebook.yaml
+        rule-provider-url-Facebook: &rule-provider-url-Facebook https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Facebook.yaml
+      GitHub: 
+        rule-file-path-GitHub: &rule-file-path-GitHub myprovider/ruleset/GitHub.yaml
+        rule-provider-url-GitHub: &rule-provider-url-GitHub https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/GitHub.yaml
+      Google:
+        rule-file-path-Google: &rule-file-path-Google myprovider/ruleset/Google.yaml
+        rule-provider-url-Google: &rule-provider-url-Google https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Google.yaml
+      Microsoft:
+        rule-file-path-Microsoft: &rule-file-path-Microsoft myprovider/ruleset/Microsoft.yaml
+        rule-provider-url-Microsoft: &rule-provider-url-Microsoft https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Microsoft.yaml
+      Netflix:
+        rule-file-path-Netflix: &rule-file-path-Netflix myprovider/ruleset/Netflix.yaml
+        rule-provider-url-Netflix: &rule-provider-url-Netflix https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Netflix.yaml
+      Netch:
+        rule-file-path-Netch: &rule-file-path-Netch myprovider/ruleset/Netch.yaml
+        rule-provider-url-Netch: &rule-provider-url-Netch https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Netch.yaml
+      NewBing:
+        rule-file-path-NewBing: &rule-file-path-NewBing myprovider/ruleset/NewBing.yaml
+        rule-provider-url-NewBing: &rule-provider-url-NewBing https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/NewBing.yaml
+      OneDrive:
+        rule-file-path-OneDrive: &rule-file-path-OneDrive myprovider/ruleset/OneDrive.yaml
+        rule-provider-url-OneDrive: &rule-provider-url-OneDrive https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/OneDrive.yaml
+      OutLook:
+        rule-file-path-OutLook: &rule-file-path-OutLook myprovider/ruleset/OutLook.yaml
+        rule-provider-url-OutLook: &rule-provider-url-OutLook https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/OutLook.yaml
+      OpenAI:
+        rule-file-path-OpenAI: &rule-file-path-OpenAI myprovider/ruleset/OpenAI.yaml
+        rule-provider-url-OpenAI: &rule-provider-url-OpenAI https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/OpenAI.yaml
+      Spotify:
+        rule-file-path-Spotify: &rule-file-path-Spotify myprovider/ruleset/Spotify.yaml
+        rule-provider-url-Spotify: &rule-provider-url-Spotify https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Spotify.yaml
+      Speedtest:
+        rule-file-path-Speedtest: &rule-file-path-Speedtest myprovider/ruleset/Speedtest.yaml
+        rule-provider-url-Speedtest: &rule-provider-url-Speedtest https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Speedtest.yaml
+      Steam:
+        rule-file-path-Steam: &rule-file-path-Steam myprovider/ruleset/Steam.yaml
+        rule-provider-url-Steam: &rule-provider-url-Steam https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Steam.yaml
+      Ubisoft:
+        rule-file-path-Ubisoft: &rule-file-path-Ubisoft myprovider/ruleset/Ubisoft.yaml
+        rule-provider-url-Ubisoft: &rule-provider-url-Ubisoft https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Ubisoft.yaml
+      Telegram:
+        rule-file-path-Telegram: &rule-file-path-Telegram myprovider/ruleset/Telegram.yaml
+        rule-provider-url-Telegram: &rule-provider-url-Telegram https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Telegram.yaml
+      Twitter:
+        rule-file-path-Twitter: &rule-file-path-Twitter myprovider/ruleset/Twitter.yaml
+        rule-provider-url-Twitter: &rule-provider-url-Twitter https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Twitter.yaml
+      Tencent:
+        rule-file-path-Tencent: &rule-file-path-Tencent myprovider/ruleset/Tencent.yaml
+        rule-provider-url-Tencent: &rule-provider-url-Tencent https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Tencent.yaml
+      YouTube:
+        rule-file-path-YouTube: &rule-file-path-YouTube myprovider/ruleset/YouTube.yaml
+        rule-provider-url-YouTube: &rule-provider-url-YouTube https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/YouTube.yaml
+      TikTok:
+        rule-file-path-TikTok: &rule-file-path-TikTok  myprovider/ruleset/TikTok.yaml
+        rule-provider-url-TikTok: &rule-provider-url-TikTok  https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/TikTok.yaml
+      PayPal:
+        rule-file-path-PayPal: &rule-file-path-PayPal  myprovider/ruleset/PayPal.yaml
+        rule-provider-url-PayPal: &rule-provider-url-PayPal  https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/PayPal.yaml
+      Discord:
+        rule-file-path-Discord: &rule-file-path-Discord  myprovider/ruleset/Discord.yaml
+        rule-provider-url-Discord: &rule-provider-url-Discord  https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Discord.yaml
+      Proxy:
+        rule-file-path-Proxy: &rule-file-path-Proxy  myprovider/ruleset/Proxy.yaml
+        rule-provider-url-Proxy: &rule-provider-url-Proxy  https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Proxy.yaml
+      ProxyClient:
+        rule-file-path-ProxyClient: &rule-file-path-ProxyClient  myprovider/ruleset/ProxyClient.yaml
+        rule-provider-url-ProxyClient: &rule-provider-url-ProxyClient  https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/ProxyClient.yaml
+      DisneyPlus:
+        rule-file-path-DisneyPlus: &rule-file-path-DisneyPlus  myprovider/ruleset/DisneyPlus.yaml
+        rule-provider-url-DisneyPlus: &rule-provider-url-DisneyPlus  https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/DisneyPlus.yaml
+      Hulu:
+        rule-file-path-Hulu: &rule-file-path-Hulu  myprovider/ruleset/Hulu.yaml
+        rule-provider-url-Hulu: &rule-provider-url-Hulu  https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Hulu.yaml
+      HBO:
+        rule-file-path-HBO: &rule-file-path-HBO myprovider/ruleset/HBO.yaml
+        rule-provider-url-HBO: &rule-provider-url-HBO https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/HBO.yaml
+      Direct:
+        rule-file-path-Direct: &rule-file-path-Direct myprovider/ruleset/Direct.yaml
+        rule-provider-url-Direct: &rule-provider-url-Direct https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Direct.yaml
+      DownLoadClient:
+        rule-file-path-DownLoadClient: &rule-file-path-DownLoadClient myprovider/ruleset/DownLoadClient.yaml
+        rule-provider-url-DownLoadClient: &rule-provider-url-DownLoadClient https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/DownLoadClient.yaml
+      IDM:
+        rule-file-path-IDM: &rule-file-path-IDM myprovider/ruleset/IDM.yaml
+        rule-provider-url-IDM: &rule-provider-url-IDM https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/IDM.yaml
+      PikPak:
+        rule-file-path-PikPak: &rule-file-path-PikPak myprovider/ruleset/PikPak.yaml
+        rule-provider-url-PikPak: &rule-provider-url-PikPak https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/PikPak.yaml
